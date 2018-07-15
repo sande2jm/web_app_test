@@ -1,11 +1,12 @@
 {% extends "base.html" %}
 
+
 {% block content %}
-	<h1>Stub, Movies</h1>
-	{% for movie in movies %}
-	<li>{{movie.title}}</li>
-	{% for time in movie.times%}
-	{{time}}
-	{% endfor %}
+<h1>Stub, Movies</h1>
+	{% for movie in info %}
+	<h2>{{movie.title}}</h2>
+		{% for time in movie.times%}
+		<a href="/booth?movie={{movie.title}}&time={{time}}">{{time}}</a>
+		{% endfor %}
 	{% endfor %}
 {% endblock %}

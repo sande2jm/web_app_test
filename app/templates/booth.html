@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+{% import 'bootstrap/wtf.html' as wtf %}
+
+
+
+{% block content %}
+	<h1>Stub, Booth</h1>
+	{% for i in range(theatre|length) %}
+	{% for j in range(theatre[i]|length) %}
+	{% if theatre[i][j] == 0 %}
+	<img src="static/open3.ico" usemap="#clickable">
+	<map name="clickable">
+  	<area shape="circle" coords="5,5,48,48" href="/select">
+</map>
+	{% else %}
+	<img src="static/reserved2.ico">
+	{% endif %}
+	{% endfor %}
+	<br>
+	{% endfor %}
+{% endblock %}
