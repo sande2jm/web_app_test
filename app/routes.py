@@ -18,13 +18,14 @@ print("Connected to Test RDS_DB")
 
 def get_movies():
 	with conn.cursor() as cur:
-		cur.execute(f'select * from Movies')
+		cur.execute('select * from {}'.format("Movies"))
 	res = cur.fetchall()
 	return res
 
 def get_times(title):
 	with conn.cursor() as cur:
-		cur.execute(f'select time from Tickets where title = "{title}"')
+
+		cur.execute('select time from Tickets where title = "{}"'.format(title))
 	res = cur.fetchall()
 	return res	
 
@@ -50,7 +51,7 @@ def display_seats(title, time):
 	cols = 10
 	print(title, time)
 	with conn.cursor() as cur:
-		cur.execute(f'select * from Tickets where title = "{title}" and time = "{time}"')
+		cur.execute('select * from Tickets where title = "{}" and time = "{}"'.format(title, time))
 		res = cur.fetchall()
 	theatre = []
 	for row in range(rows):
